@@ -13,7 +13,6 @@ module.exports = function (grunt, options) {
   });
 
   var preBuildTasks = [
-    'jsstyleIfEnabled',
     'scssstyleIfEnabled',
     'typescriptIfEnabled',
     'babelIfEnabled',
@@ -84,6 +83,7 @@ module.exports = function (grunt, options) {
     'ignore-code-style-checks',
     'karma:unit',
     'clean:ts',
+    'jsstyleIfEnabled',
     'pre-build',
     'livereloadServer',
     'connect:livereload',
@@ -108,6 +108,7 @@ module.exports = function (grunt, options) {
   ]);
 
   grunt.registerTask('test', [
+    'jsstyleIfEnabled',
     'pre-build:clean',
     'karma:single'
   ]);
@@ -134,6 +135,7 @@ module.exports = function (grunt, options) {
     'migrate-to-scopes',
     'migrate-bower-artifactory',
     'verify-npm',
+    'jsstyleIfEnabled',
     'pre-build:clean',
     shouldRunTests ? 'karma:single' : 'noop',
     'package',
